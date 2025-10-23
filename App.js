@@ -1,18 +1,33 @@
-import { View, Text, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Image, Dimensions } from "react-native";
+
+// const width = Dimensions.get("window").width;
+// const height = Dimensions.get("window").height;
+
+const { width, height } = Dimensions.get("window");
 
 export default function App() {
   return (
-    <ScrollView horizontal={true}>
+    <ScrollView>
       <View style={styles.container}>
-        <View style={[styles.box, { backgroundColor: "red" }]}>
-          <Text style={styles.title}>Pizza</Text>
-        </View>
-        <View style={[styles.box, { backgroundColor: "orange" }]}>
-          <Text style={styles.title}>Burger</Text>
-        </View>
-        <View style={[styles.box, { backgroundColor: "blue" }]}>
-          <Text style={styles.title}>Salad</Text>
-        </View>
+        <Image source={require("./images/img-1.jpg")} style={styles.image} />
+        <Image
+          source={{
+            uri: "https://images.pexels.com/photos/20188350/pexels-photo-20188350.jpeg",
+          }}
+          style={styles.image}
+        />
+        <Image
+          source={{
+            uri: "https://images.pexels.com/photos/18023782/pexels-photo-18023782.jpeg",
+          }}
+          style={styles.image}
+        />
+        <Image
+          source={{
+            uri: "https://images.pexels.com/photos/20188350/pexels-photo-20188350.jpeg",
+          }}
+          style={styles.image}
+        />
       </View>
     </ScrollView>
   );
@@ -21,22 +36,9 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    gap: 20,
-    paddingVertical: StatusBar.currentHeight + 24,
-    paddingHorizontal: 20,
   },
-  box: {
-    height: 250,
-    width: 200,
-    borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "black",
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "white",
+  image: {
+    height: height,
+    width: width,
   },
 });
