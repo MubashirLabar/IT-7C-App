@@ -1,44 +1,58 @@
-import { View, StyleSheet, ScrollView, Image, Dimensions } from "react-native";
-
-// const width = Dimensions.get("window").width;
-// const height = Dimensions.get("window").height;
-
-const { width, height } = Dimensions.get("window");
+import { useState } from "react";
+import { View, StyleSheet, TextInput } from "react-native";
 
 export default function App() {
+  const [username, setUsername] = useState("BSIT 7th C");
+  const [password, setPassword] = useState("123456");
+
+  console.log("username...", username);
+  console.log("password...", password);
+
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <Image source={require("./images/img-1.jpg")} style={styles.image} />
-        <Image
-          source={{
-            uri: "https://images.pexels.com/photos/20188350/pexels-photo-20188350.jpeg",
-          }}
-          style={styles.image}
-        />
-        <Image
-          source={{
-            uri: "https://images.pexels.com/photos/18023782/pexels-photo-18023782.jpeg",
-          }}
-          style={styles.image}
-        />
-        <Image
-          source={{
-            uri: "https://images.pexels.com/photos/20188350/pexels-photo-20188350.jpeg",
-          }}
-          style={styles.image}
-        />
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      <TextInput
+        placeholder="Enter your name"
+        style={styles.input}
+        value={username}
+        onChangeText={(value) => {
+          setUsername(value);
+        }}
+        readOnly={true}
+      />
+      <TextInput
+        placeholder="Enter your password"
+        style={styles.input}
+        secureTextEntry={true}
+        value={password}
+        onChangeText={(value) => setPassword(value)}
+      />
+      <TextInput
+        placeholder="Explain your expertise"
+        style={[styles.input, { height: 200 }]}
+        multiline={true}
+        maxLength={150}
+      />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 40,
   },
-  image: {
-    height: height,
-    width: width,
+
+  input: {
+    fontSize: 24,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 12,
+    width: "100%",
+    height: 60,
+    paddingHorizontal: 20,
+    marginBottom: 24,
+    textAlignVertical: "top",
   },
 });
